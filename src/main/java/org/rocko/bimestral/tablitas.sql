@@ -8,4 +8,6 @@
  * Created: 30/05/2017
  */
 
-create table direccion(id integer primary key auto_increment,calle varchar(40),cp integer,municipio varchar(40));
+create table direccion(id integer primary key auto_increment,numero integer,calle varchar(40),cp integer,municipio varchar(40));
+
+select * from direccion;

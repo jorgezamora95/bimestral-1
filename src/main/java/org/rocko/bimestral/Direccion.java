@@ -6,7 +6,9 @@
 package org.rocko.bimestral;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
@@ -14,9 +16,13 @@ import javax.persistence.Id;
  */
 @Entity
 
+//opcional
+   //@Table(name="direccion")
+
 public class Direccion {
    
     @Id
+    @GeneratedValue
     private Long id;
     
     private Integer numero;
