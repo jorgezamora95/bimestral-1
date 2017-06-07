@@ -26,7 +26,7 @@ public class BimestralApplicationTests {
            assertEquals(4, suma);
        }
        
-      // @Test
+       //@Test
        public void probarInsertDireccion() throws Exception{
            
            Direccion dir=repoDireccion.save(new Direccion(777, "calle 13", 55130L, "Ecatepec"));
@@ -46,9 +46,15 @@ public class BimestralApplicationTests {
            assertEquals(1, dir.size());
        }
        
-       @Test
+      // @Test
        public void probarActualizar() throws Exception{
           Direccion dir=repoDireccion.save(new Direccion(1l,1,"rod",55155L,"Morelos"));
           assertEquals("rod",dir.getCalle());
+       }
+       
+       @Test
+       public void borrar () throws Exception{
+           repoDireccion.delete(1L);
+           assertNull(repoDireccion.findOne(1L));
        }
 }
