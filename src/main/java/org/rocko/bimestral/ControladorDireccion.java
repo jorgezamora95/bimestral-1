@@ -5,6 +5,11 @@
  */
 package org.rocko.bimestral;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -13,6 +18,36 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class ControladorDireccion {
+    //autowired servicios
+    @Autowired RepositorioDireccion repo;
+    
+    /**
+     * 
+     * @param numero este parametro es el numero de calle y es de tipo Integer
+     * @param calle  el nombre de la calle, es de tipo String
+     * @param cp     el codigo postal , es de tipo long
+     * @param municipio el municipio es de tipo String
+     * @return  el tipo de retorno es un objeto Direccion que se guardo e incluye el id generado
+     *          
+     */
+    @RequestMapping(value="/direccion/{numero}/{calle}/{cp}/{municipio}",method=RequestMethod.POST,
+            headers={"Accept=application/json"})
+    
+    public Direccion guardar (@PathVariable Integer numero,@PathVariable String calle,@PathVariable Long cp,
+            @PathVariable String municipio){
+                
+                return repo.save(new Direccion(numero, calle, cp, municipio));
+            }
     
     
+    /*
+    @Path("/service/")
+    Direccion;
+    @Get
+    @Produces({MediaType.APPLICATION_JSON})
+    Public List<Direccion> get.Direccion(){
+        List<Direccion> result=new LinkedList <>();
+        result.add(new Direccion(1L,1564,"calle 30",57100L,"Ecatepec"));
+        return result;
+    }*/
 }
