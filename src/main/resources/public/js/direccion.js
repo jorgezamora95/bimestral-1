@@ -3,20 +3,28 @@
 $("#guardarDireccion").click(function() {
 
 //aplicamos el metodo POST usando la URI del servicio
+var numero=$("#numero").val();
+var calle=$("#calle").val();
+var cp=$("#cp").val();
+var municipio=$("#municipio").val();
 
-$.post("direccion/12/calle 13/55130/ecatepec",function(json){
+$.post("direccion/"+numero+'/'+calle+'/'+cp+'/'+municipio,function(json){
 console.log(json.id);
 });
 
 });
 
 
+
+
+
+
 $("#buscarPorId").click(function() {
 
 //aplicamos el metodo GET usando la URI del servicio
-
-$.get("direccion/1",function(json){
-console.log("esta es la direccion buscada "+json.id);
+var id=$("#id").val();
+$.get("direccion/"+id,function(json){
+console.log("direccion buscada "+json.id+" "+json.numero+" "+json.calle+" "+json.cp+" "+json.municipio);
 });
 
 });

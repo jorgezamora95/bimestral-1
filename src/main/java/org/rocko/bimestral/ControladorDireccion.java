@@ -43,8 +43,8 @@ public class ControladorDireccion {
     @RequestMapping (value="/direccion/{id}",method=RequestMethod.GET,
                  headers={"Accept=application/json"})
     
-    public Direccion buscarId (@PathVariable Long ID){
-        return repo.findOne(1L);
+    public Direccion buscarId (@PathVariable Long id){
+        return repo.findOne(id);
     }
     
     //put
