@@ -15,16 +15,13 @@ console.log(json.id);
 });
 
 
-
-
-
-
 $("#buscarPorId").click(function() {
 
 //aplicamos el metodo GET usando la URI del servicio
 var id=$("#id").val();
 $.get("direccion/"+id,function(json){
-console.log("direccion buscada "+json.id+" "+json.numero+" "+json.calle+" "+json.cp+" "+json.municipio);
+console.log("direccion buscada "+json.id+" numero: "+json.numero+" calle: "+json.calle+
+        " codigo postal: "+json.cp+" municipio "+json.municipio);
 });
 
 });
@@ -33,12 +30,20 @@ console.log("direccion buscada "+json.id+" "+json.numero+" "+json.calle+" "+json
 $("#actualizar").click(function() {
 
 //aplicamos el metodo PUT usando la URI del servicio
+var id=$("#id").val();
+var numero=$("#numero").val();
+var calle=$("#calle").val();
+var cp=$("#cp").val();
+var municipio=$("#municipio").val();
 
-$.put("direccion/1/12/calle 13/55130/ecatepec",function(json){
-console.log("esta es la nueva direccion "+json.id);
+$.put("direccion/"+id+'/'+numero+'/'+calle+'/'+cp+'/'+municipio,function(json){
+console.log("esta es la nueva direccion "+json.id+" numero: "+json.numero+" calle: "+json.calle+
+        " codigo postal: "+json.cp+" municipio "+json.municipio);
 });
 
 });
+
+
 
 $("#borrar").click(function() {
 
