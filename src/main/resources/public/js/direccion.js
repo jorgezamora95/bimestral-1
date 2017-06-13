@@ -48,9 +48,10 @@ console.log("esta es la nueva direccion "+json.id+" numero: "+json.numero+" call
 $("#borrar").click(function() {
 
 //aplicamos el metodo DELETE usando la URI del servicio
-
-$.delete("direccion/1",function(json){
-console.log("borro esta direccion "+json.id);
+var id=$("#id").val();
+$.delete("direccion/"+id,function(json){
+console.log("borro esta direccion "+json.id+" numero: "+json.numero+" calle: "+json.calle+
+        " codigo postal: "+json.cp+" municipio "+json.municipio);
 });
 
 });

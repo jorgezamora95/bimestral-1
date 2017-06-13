@@ -54,17 +54,20 @@ public class ControladorDireccion {
     public Direccion actualizar (@PathVariable Long id,@PathVariable Integer numero,
             @PathVariable String calle,@PathVariable Long cp,
             @PathVariable String municipio){
-        return repo.save(new Direccion(id,numero,calle,cp,municipio));
+        
+        repo.findOne(id);
+        if (repo.exists(id)){
+          repo.save(new Direccion(id,numero,calle,cp,municipio));
+        }
+     return repo.save(new Direccion(id,numero,calle,cp,municipio));
     }
-    
-    
     
     //delete
     @RequestMapping (value="/direccion/{id}",method=RequestMethod.DELETE,
               headers={"Accept=application/json"})
     
     public Direccion borrar(@PathVariable Long id){
-        return repo.findOne(1L);
+        return repo.findOne(id);
     }
 
     
