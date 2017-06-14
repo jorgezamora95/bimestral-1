@@ -14,18 +14,25 @@ console.log(json.id);
 
 });
 
+//buscar por id
+$("#buscarPorId").click(function(){
+            //Aplicamos el metodo post usando la uri del servicio
+            var id=$("#id").val();
+      
+            
+          $.get("direccion/"+id,function(json){
+              console.log(json.municipio);
+              $("#numero2").val(json.numero);
+              $("#calle2").val(json.calle);
+              $("#cp2").val(json.cp);
+              $("#municipio2").val(json.municipio);
+               })  ;
+            
+           }
+        );
 
-$("#buscarPorId").click(function() {
 
-//aplicamos el metodo GET usando la URI del servicio
-var id=$("#id").val();
-$.get("direccion/"+id,function(json){
-console.log("direccion buscada "+json.id+" numero: "+json.numero+" calle: "+json.calle+
-        " codigo postal: "+json.cp+" municipio "+json.municipio);
-});
-
-});
-
+//actualizar
 
 $("#actualizar").click(function() {
 
@@ -36,7 +43,8 @@ var calle=$("#calle").val();
 var cp=$("#cp").val();
 var municipio=$("#municipio").val();
 
-$.put("direccion/"+id+'/'+numero+'/'+calle+'/'+cp+'/'+municipio,function(json){
+$.post("direccion/"+id+'/'+numero+'/'+calle+'/'+cp+'/'+municipio,function(json){
+
 console.log("esta es la nueva direccion "+json.id+" numero: "+json.numero+" calle: "+json.calle+
         " codigo postal: "+json.cp+" municipio "+json.municipio);
 });

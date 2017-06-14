@@ -5,6 +5,7 @@
  */
 package org.rocko.bimestral;
 
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,18 +48,25 @@ public class ControladorDireccion {
         return repo.findOne(id);
     }
     
-    //put
-    @RequestMapping (value="/direccion/{id}/{numero}/{calle}/{cp}/{municipio}",method=RequestMethod.PUT,
+    //buscar todos
+    @RequestMapping (value="/direccion",method=RequestMethod.GET,
+                 headers={"Accept=application/json"})
+    
+    public ArrayList<Direccion> buscarTodos(){
+        return(ArrayList<Direccion>) repo.findAll();
+    }
+    
+    
+    //put actualizar
+    @RequestMapping (value="/direccion/{id}/{numero}/{calle}/{cp}/{municipio}",method=RequestMethod.POST,
             headers={"Accept=application/json"})
     
     public Direccion actualizar (@PathVariable Long id,@PathVariable Integer numero,
             @PathVariable String calle,@PathVariable Long cp,
             @PathVariable String municipio){
         
-        repo.findOne(id);
-        if (repo.exists(id)){
-          repo.save(new Direccion(id,numero,calle,cp,municipio));
-        }
+      
+        
      return repo.save(new Direccion(id,numero,calle,cp,municipio));
     }
     
@@ -66,8 +74,11 @@ public class ControladorDireccion {
     @RequestMapping (value="/direccion/{id}",method=RequestMethod.DELETE,
               headers={"Accept=application/json"})
     
-    public Direccion borrar(@PathVariable Long id){
-        return repo.findOne(id);
+    public Estatus borrar(@PathVariable Long id){
+        repo.delete(new Direccion(id));
+        Estatus estatus=new Estatus();
+        estatus.setSuccess(true);
+        return estatus;
     }
 
     
