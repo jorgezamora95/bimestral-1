@@ -58,7 +58,7 @@ public class ControladorDireccion {
     
     
     //put actualizar
-    @RequestMapping (value="/direccion/{id}/{numero}/{calle}/{cp}/{municipio}",method=RequestMethod.POST,
+    @RequestMapping (value="/direccion/{id}/{numero}/{calle}/{cp}/{municipio}",method=RequestMethod.PUT,
             headers={"Accept=application/json"})
     
     public Direccion actualizar (@PathVariable Long id,@PathVariable Integer numero,

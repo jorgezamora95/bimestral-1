@@ -38,17 +38,24 @@ $("#actualizar").click(function() {
 
 //aplicamos el metodo PUT usando la URI del servicio
 var id=$("#id").val();
-var numero=$("#numero").val();
-var calle=$("#calle").val();
-var cp=$("#cp").val();
-var municipio=$("#municipio").val();
+var numero=$("#numero2").val();
+var calle=$("#calle2").val();
+var cp=$("#cp2").val();
+var municipio=$("#municipio2").val();
 
-$.post("direccion/"+id+'/'+numero+'/'+calle+'/'+cp+'/'+municipio,function(json){
+$.ajax ({
+type:'PUT',
+url:"direccion/"+id+'/'+numero+'/'+calle+'/'+cp+'/'+municipio,
+success:function(json){
+alert(json.municipio);
 
-console.log("esta es la nueva direccion "+json.id+" numero: "+json.numero+" calle: "+json.calle+
-        " codigo postal: "+json.cp+" municipio "+json.municipio);
-});
-
+console.log(json.municipio);
+$("#numero2").val(json.numero);
+$("#calle2").val(json.calle);
+$("#cp2").val(json.cp);
+$("#municipio2").val(json.municipio);
+}
+  });
 });
 
 
@@ -57,9 +64,13 @@ $("#borrar").click(function() {
 
 //aplicamos el metodo DELETE usando la URI del servicio
 var id=$("#id").val();
-$.delete("direccion/"+id,function(json){
-console.log("borro esta direccion "+json.id+" numero: "+json.numero+" calle: "+json.calle+
-        " codigo postal: "+json.cp+" municipio "+json.municipio);
+$.ajax({
+type:'delete',
+url:"direccion/"+id,
+success:function(json){
+    alert(json.success);
+
+        }
 });
 
 });
