@@ -65,7 +65,7 @@ public class ControladorDireccion {
             @PathVariable String calle,@PathVariable Long cp,
             @PathVariable String municipio){
         
-      
+        System.out.println("se hizo la actualizacion"); 
         
      return repo.save(new Direccion(id,numero,calle,cp,municipio));
     }

@@ -74,3 +74,19 @@ success:function(json){
 });
 
 });
+
+
+//buscar Todos
+ $("#buscarTodos".click=function(){
+        
+           //metodo get
+        $.get("direccion",function(){
+            var todos=$.get.direccion.length;
+
+            console.log("tamano:"+todos);
+           var primero= $.get.direccion[0];
+            console.log(primero.id+" "+primero.numero+" "+primero.calle+" "+primero.cp+" "+primero.municipio);
+        });
+
+    
+});
