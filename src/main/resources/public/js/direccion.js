@@ -1,3 +1,17 @@
+//hasta arriba haremos el servicio para que la pagina se cree automaticamente
+$.ajax({
+    url:'direccion',
+    type:'get',
+    success:function(json){
+    console.log("este es el tamaño del arreglo "+json.length);    
+    for(var i=0;i<json.length;i++){
+       
+        $("#tablita").append(("<tr><td>"+json[i].id+"</td> <td>"+json[i].numero+"</td> <td>"+json[i].calle+"</td> <td>"
+                +json[i].cp+"</td> <td>"+json[i].municipio+"</td></tr>"));
+        
+    }
+    }
+});
 
 
 $("#guardarDireccion").click(function() {
@@ -76,16 +90,3 @@ success:function(json){
 });
 
 
-//buscar Todos
- $("#buscarTodos".click=function(){
-  $.ajax({      
-  type: 'GET',
-  url: 'direccion',
-  dataType: 'json',
-  success:function(direccion){
-      buscarTodosSuccess(direccion);
-  $.each(direccion,function(index,direccion));
-  }
-  
-    });
-  });
