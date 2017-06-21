@@ -20,11 +20,11 @@ public class controladorNomina {
     @Autowired servicioNomina ser;
     
         @RequestMapping(value="/nomina",method=RequestMethod.GET,
-            headers={"Accept=application/json"})
+            headers={"Accept=html/txt"})
     
-    public Nomina(){
-                
-                return ser;
+    public String obtenerNomina(){
+              
+                return ser.servicioPagarNomina().pagarNomina();
             }
 
     

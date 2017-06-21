@@ -10,12 +10,28 @@ package org.rocko.bimestral;
  * @author Sony
  */
 public class trabajadorHonorarios extends Trabajador implements Nomina {
-    Float iva;
-    Float isr;
+    private Float iva;
+    private Float isr;
     
     @Override
     public String pagarNomina(){
-        return ("nomina con con iva"+iva+"y con isr"+isr);
+        return ("pago de nomina con con iva "+iva+" y con isr "+isr);
+    }
+
+    public Float getIva() {
+        return iva;
+    }
+
+    public void setIva(Float iva) {
+        this.iva = iva;
+    }
+
+    public Float getIsr() {
+        return isr;
+    }
+
+    public void setIsr(Float isr) {
+        this.isr = isr;
     }
     
 }

@@ -11,11 +11,19 @@ package org.rocko.bimestral;
  */
 public class trabajadorPlanta extends Trabajador implements Nomina {
     
-    Float sueldoBase;
+    private Float sueldoBase;
     
     @Override
     public String pagarNomina(){
         return("pagado");
+    }
+
+    public Float getSueldoBase() {
+        return sueldoBase;
+    }
+
+    public void setSueldoBase(Float sueldoBase) {
+        this.sueldoBase = sueldoBase;
     }
     
 }

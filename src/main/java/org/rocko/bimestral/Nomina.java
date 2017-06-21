@@ -11,6 +11,8 @@ package org.rocko.bimestral;
  */
 public interface Nomina {
     
-    public String pagarNomina();
+   
+    public abstract String pagarNomina();
     
+   
 }

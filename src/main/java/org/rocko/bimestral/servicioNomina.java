@@ -5,14 +5,18 @@
  */
 package org.rocko.bimestral;
 
+import org.springframework.stereotype.Service;
+
 /**
  *
  * @author Sony
  */
+@Service
 public class servicioNomina {
 
 public Nomina servicioPagarNomina(){
+    Nomina n=new trabajadorHonorarios();
     
-    return  TrabajadorPlanta();
+    return n;
 }    
 }
