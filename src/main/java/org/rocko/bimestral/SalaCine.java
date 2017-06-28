@@ -7,7 +7,9 @@ package org.rocko.bimestral;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Id;
+import javax.persistence.Persistence;
 import javax.persistence.Table;
 
 /**
@@ -21,7 +23,12 @@ public class SalaCine {
     
    @Id
    @Column(name ="id_sala")
-    private Integer idSala;
+    private Long idSala;
+
+    @Override
+    public String toString() {
+        return "SalaCine{" + "idSala=" + idSala + ", tituloPelicula=" + tituloPelicula + ", clasificacion=" + clasificacion + ", numeroAsientos=" + numeroAsientos + '}';
+    }
    @Column
     private String tituloPelicula;
    @Column
@@ -29,7 +36,7 @@ public class SalaCine {
    @Column(name="num_asientos")
     private Integer numeroAsientos;
 
-    public SalaCine(Integer idSala, String tituloPelicula, String clasificacion, Integer numeroAsientos) {
+    public SalaCine(Long idSala, String tituloPelicula, String clasificacion, Integer numeroAsientos) {
         this.idSala = idSala;
         this.tituloPelicula = tituloPelicula;
         this.clasificacion = clasificacion;
@@ -39,11 +46,11 @@ public class SalaCine {
     public SalaCine() {
     }
 
-    public Integer getIdSala() {
+    public Long getIdSala() {
         return idSala;
     }
 
-    public void setIdSala(Integer idSala) {
+    public void setIdSala(Long idSala) {
         this.idSala = idSala;
     }
 
@@ -72,5 +79,7 @@ public class SalaCine {
     }
     
    
+    
+    
     
 }

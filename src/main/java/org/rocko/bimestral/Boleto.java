@@ -23,20 +23,20 @@ public class Boleto {
     @Id
     @GeneratedValue
     @Column(name="id_boleto")
-    private Integer idBoleto;
+    private Long idBoleto;
     //foreign key
     
     @Column(name="sid_sala")
-    private Integer sidSala;
+    private Long sidSala;
     @Column
     private Float costoBoleto;
     
     @ManyToOne
-    //foreign key
+    //foreign key uniones
     @JoinColumn(name="sid_sala")        
     SalaCine salaCine;
 
-    public Boleto(Integer idBoleto, Integer sidSala, Float costoBoleto) {
+    public Boleto(Long idBoleto, Long sidSala, Float costoBoleto) {
         this.idBoleto = idBoleto;
         this.sidSala = sidSala;
         this.costoBoleto = costoBoleto;
@@ -45,19 +45,24 @@ public class Boleto {
     public Boleto() {
     }
 
-    public Integer getIdBoleto() {
+    @Override
+    public String toString() {
+        return "Boleto{" + "idBoleto=" + idBoleto + ", sidSala=" + sidSala + ", costoBoleto=" + costoBoleto + ", salaCine=" + salaCine + '}';
+    }
+
+    public Long getIdBoleto() {
         return idBoleto;
     }
 
-    public void setIdBoleto(Integer idBoleto) {
+    public void setIdBoleto(Long idBoleto) {
         this.idBoleto = idBoleto;
     }
 
-    public Integer getSidSala() {
+    public Long getSidSala() {
         return sidSala;
     }
 
-    public void setSidSala(Integer sidSala) {
+    public void setSidSala(Long sidSala) {
         this.sidSala = sidSala;
     }
 
