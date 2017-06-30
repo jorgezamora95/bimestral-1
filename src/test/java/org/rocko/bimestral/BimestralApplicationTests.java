@@ -16,6 +16,7 @@ public class BimestralApplicationTests {
 
     @Autowired
     RepositorioDireccion repoDireccion;
+    RepositorioSalaCine repoSalaCine;
 	@Test
 	public void contextLoads() {
 	}
@@ -52,9 +53,45 @@ public class BimestralApplicationTests {
           assertEquals("rod",dir.getCalle());
        }
        
-       @Test
+       //@Test
        public void borrar () throws Exception{
            repoDireccion.delete(1L);
            assertNull(repoDireccion.findOne(1L));
        }
+       
+       
+       //repositorio sala cine
+       
+       //@Test
+       public void probarInsertSalaCine() throws Exception{
+           
+           SalaCine salaCine=repoSalaCine.save(new SalaCine("batman", "clasificacion b",50));
+           assertEquals(new Long(1L),salaCine.getIdSala());
+           
+       }
+       
+       //@Test
+       public void probarBuscarporId() throws Exception{
+           SalaCine salaCine=repoSalaCine.findOne(1L);
+                   assertEquals("batman",salaCine.getTituloPelicula());
+       }
+       
+       //@Test
+       public void probarBuscarTodos() throws Exception{
+           ArrayList<SalaCine> salaCine=(ArrayList< SalaCine>) repoSalaCine.findAll();
+           assertEquals(1, salaCine.size());
+       }
+       
+      // @Test
+       public void probarActualizar() throws Exception{
+          SalaCine salaCine=repoSalaCine.save(new SalaCine(1L,"superman","clasificacion c",55));
+          assertEquals("superman",salaCine.getTituloPelicula());
+       }
+       
+       //@Test
+       public void borrar () throws Exception{
+           repoSalaCine.delete(1L);
+           assertNull(repoSalaCine.findOne(1L));
+       }
+       
 }
