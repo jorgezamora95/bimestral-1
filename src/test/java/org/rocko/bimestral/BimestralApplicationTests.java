@@ -62,34 +62,34 @@ public class BimestralApplicationTests {
        
        //repositorio sala cine
        
-       //@Test
+       @Test
        public void probarInsertSalaCine() throws Exception{
            
-           SalaCine salaCine=repoSalaCine.save(new SalaCine("batman", "clasificacion b",50));
+           SalaCine salaCine=repoSalaCine.save(new SalaCine(1L,"batman", "clasificacion b",50));
            assertEquals(new Long(1L),salaCine.getIdSala());
            
        }
        
        //@Test
-       public void probarBuscarporId() throws Exception{
+       public void probarBuscarporIdSalaCine() throws Exception{
            SalaCine salaCine=repoSalaCine.findOne(1L);
                    assertEquals("batman",salaCine.getTituloPelicula());
        }
        
        //@Test
-       public void probarBuscarTodos() throws Exception{
+       public void probarBuscarTodosSalaCine() throws Exception{
            ArrayList<SalaCine> salaCine=(ArrayList< SalaCine>) repoSalaCine.findAll();
            assertEquals(1, salaCine.size());
        }
        
       // @Test
-       public void probarActualizar() throws Exception{
+       public void probarActualizarSalaCine() throws Exception{
           SalaCine salaCine=repoSalaCine.save(new SalaCine(1L,"superman","clasificacion c",55));
           assertEquals("superman",salaCine.getTituloPelicula());
        }
        
        //@Test
-       public void borrar () throws Exception{
+       public void borrarSalaCine () throws Exception{
            repoSalaCine.delete(1L);
            assertNull(repoSalaCine.findOne(1L));
        }

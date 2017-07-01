@@ -28,13 +28,13 @@ public class ControladorSalaCine {
      *          
      */
 
- @RequestMapping(value="/salacine/{tituloPelicula}/{clasificacion}/{numeroAsientos}",method=RequestMethod.POST,
+ @RequestMapping(value="/salacine/{idSala}/{tituloPelicula}/{clasificacion}/{numeroAsientos}",method=RequestMethod.POST,
             headers={"Accept=application/json"})
     
-    public SalaCine guardar (@PathVariable String tituloPelicula,@PathVariable String clasificacion,
+    public SalaCine guardar (@PathVariable Long idSala,@PathVariable String tituloPelicula,@PathVariable String clasificacion,
                              @PathVariable Integer numeroAsientos){
                 
-                return repoSalaCine.save(new SalaCine(tituloPelicula, clasificacion, numeroAsientos));
+                return repoSalaCine.save(new SalaCine(idSala,tituloPelicula, clasificacion, numeroAsientos));
             }
     
 
