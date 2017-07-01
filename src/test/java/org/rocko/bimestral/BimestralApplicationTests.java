@@ -3,6 +3,7 @@ package org.rocko.bimestral;
 
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,6 +18,7 @@ public class BimestralApplicationTests {
     @Autowired
     RepositorioDireccion repoDireccion;
     RepositorioSalaCine repoSalaCine;
+    RepositorioTarjeta repoTarjeta;
 	@Test
 	public void contextLoads() {
 	}
@@ -60,38 +62,38 @@ public class BimestralApplicationTests {
        }
        
        
-       //repositorio sala cine
+       //repositorio tarjeta
        
-       @Test
-       public void probarInsertSalaCine() throws Exception{
+       //@Test
+       public void probarInsertTarjeta() throws Exception{
            
-           SalaCine salaCine=repoSalaCine.save(new SalaCine(1L,"batman", "clasificacion b",50));
-           assertEquals(new Long(1L),salaCine.getIdSala());
+           Tarjeta tarjeta=repoTarjeta.save(new Tarjeta("credito", 1000F,new Date()));
+           assertEquals(new Long(1L),tarjeta.getIdTarjeta());
            
        }
        
        //@Test
-       public void probarBuscarporIdSalaCine() throws Exception{
-           SalaCine salaCine=repoSalaCine.findOne(1L);
-                   assertEquals("batman",salaCine.getTituloPelicula());
+       public void probarBuscarIdTarjeta() throws Exception{
+           Tarjeta tarjeta=repoTarjeta.findOne(1L);
+                   assertEquals("credito",tarjeta.getTipo());
        }
        
        //@Test
-       public void probarBuscarTodosSalaCine() throws Exception{
-           ArrayList<SalaCine> salaCine=(ArrayList< SalaCine>) repoSalaCine.findAll();
-           assertEquals(1, salaCine.size());
+       public void probarBuscarTodosTarjeta() throws Exception{
+           ArrayList<Tarjeta> Tarjeta=(ArrayList< Tarjeta>) repoTarjeta.findAll();
+           assertEquals(1, Tarjeta.size());
        }
        
       // @Test
-       public void probarActualizarSalaCine() throws Exception{
-          SalaCine salaCine=repoSalaCine.save(new SalaCine(1L,"superman","clasificacion c",55));
-          assertEquals("superman",salaCine.getTituloPelicula());
+       public void probarActualizarTarjeta() throws Exception{
+          Tarjeta tarjeta=repoTarjeta.save(new Tarjeta(1L,"credito",1000F,new Date()));
+          assertEquals("debito",tarjeta.getTipo());
        }
        
        //@Test
-       public void borrarSalaCine () throws Exception{
-           repoSalaCine.delete(1L);
-           assertNull(repoSalaCine.findOne(1L));
+       public void borrarTarjeta () throws Exception{
+           repoTarjeta.delete(1L);
+           assertNull(repoTarjeta.findOne(1L));
        }
        
 }

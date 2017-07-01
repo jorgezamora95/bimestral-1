@@ -17,3 +17,7 @@ create table boleto(id_boleto integer primary key auto_increment,sid_sala intege
                      foreign key (sid_sala) references salaCine(id_sala));
 
 describe salaCine;
+
+create table tarjeta(idTarjeta integer primary key auto_increment,tipo varchar(80),saldo Float,fechaCorte date);
+create table cliente(idCliente integer primary key auto_increment,idTarjeta integer,nombre varchar(80)foreign key(idTarjeta)
+                       references tarjeta(idTarjeta));
