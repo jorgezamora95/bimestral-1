@@ -36,6 +36,16 @@ public class SalaCine {
    @Column(name="num_asientos")
     private Integer numeroAsientos;
 
+    public SalaCine(String tituloPelicula, String clasificacion, Integer numeroAsientos) {
+        this.tituloPelicula = tituloPelicula;
+        this.clasificacion = clasificacion;
+        this.numeroAsientos = numeroAsientos;
+    }
+
+    public SalaCine(Long idSala) {
+        this.idSala = idSala;
+    }
+
     public SalaCine(Long idSala, String tituloPelicula, String clasificacion, Integer numeroAsientos) {
         this.idSala = idSala;
         this.tituloPelicula = tituloPelicula;

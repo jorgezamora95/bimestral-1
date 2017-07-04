@@ -30,6 +30,15 @@ public class Boleto {
     private Long sidSala;
     @Column
     private Float costoBoleto;
+
+    public Boleto(Long idBoleto) {
+        this.idBoleto = idBoleto;
+    }
+
+    public Boleto(Long sidSala, Float costoBoleto) {
+        this.sidSala = sidSala;
+        this.costoBoleto = costoBoleto;
+    }
     
     @ManyToOne
     //foreign key uniones

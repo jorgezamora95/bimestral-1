@@ -19,6 +19,7 @@ public class BimestralApplicationTests {
     RepositorioDireccion repoDireccion;
     RepositorioSalaCine repoSalaCine;
     RepositorioTarjeta repoTarjeta;
+    RepositorioBoleto repoBoleto;
 	@Test
 	public void contextLoads() {
 	}
@@ -95,5 +96,74 @@ public class BimestralApplicationTests {
            repoTarjeta.delete(1L);
            assertNull(repoTarjeta.findOne(1L));
        }
+       
+       //// repositorio salacine
+       
+        //@Test
+       public void probarInsertSalaCine() throws Exception{
+           
+           SalaCine salaCine=repoSalaCine.save(new SalaCine("batman", "clasificacion b", 50));
+           assertEquals(new Long(1L),salaCine.getIdSala());
+           
+       }
+       
+       //@Test
+       public void probarBuscarporIdSalaCine() throws Exception{
+           SalaCine salaCine=repoSalaCine.findOne(1L);
+                   assertEquals("batman",salaCine.getTituloPelicula());
+       }
+       
+       //@Test
+       public void probarBuscarTodosSalaCine() throws Exception{
+           ArrayList<SalaCine> salaCine=(ArrayList< SalaCine>) repoSalaCine.findAll();
+           assertEquals(1, salaCine.size());
+       }
+       
+      // @Test
+       public void probarActualizarSalaCine() throws Exception{
+          SalaCine salaCine=repoSalaCine.save(new SalaCine(1L,"superman","clasificacion a",70));
+          assertEquals("batman",salaCine.getTituloPelicula());
+       }
+       
+       //@Test
+       public void borrarSalaCine () throws Exception{
+           repoSalaCine.delete(1L);
+           assertNull(repoSalaCine.findOne(1L));
+       }
+       
+       //// repositorio boleto
+       
+        //@Test
+       public void probarInsertBoleto() throws Exception{
+           
+           Boleto boleto=repoBoleto.save(new Boleto(1L, 50F));
+           assertEquals(new Long(1L),boleto.getIdBoleto());
+           
+       }
+       
+       //@Test
+       public void probarBuscarporIdBoleto() throws Exception{
+           Boleto boleto=repoBoleto.findOne(1L);
+                   assertEquals(50F,boleto.getCostoBoleto());
+       }
+       
+       //@Test
+       public void probarBuscarTodosBoleto() throws Exception{
+           ArrayList<Boleto> boleto=(ArrayList< Boleto>) repoBoleto.findAll();
+           assertEquals(1, boleto.size());
+       }
+       
+      // @Test
+       public void probarActualizarBoleto() throws Exception{
+          Boleto boleto=repoBoleto.save(new Boleto(1L,2L,70F));
+          assertEquals(1L,boleto.getIdBoleto());
+       }
+       
+       //@Test
+       public void borrarBoleto () throws Exception{
+           repoBoleto.delete(1L);
+           assertNull(repoBoleto.findOne(1L));
+       }
+        
        
 }
