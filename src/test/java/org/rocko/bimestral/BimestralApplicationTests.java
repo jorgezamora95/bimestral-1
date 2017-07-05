@@ -144,7 +144,7 @@ public class BimestralApplicationTests {
        //@Test
        public void probarBuscarporIdBoleto() throws Exception{
            Boleto boleto=repoBoleto.findOne(1L);
-                   assertEquals(50F,boleto.getCostoBoleto());
+                   assertEquals(new Float(50f),boleto.getCostoBoleto()); 
        }
        
        //@Test
@@ -156,7 +156,7 @@ public class BimestralApplicationTests {
       // @Test
        public void probarActualizarBoleto() throws Exception{
           Boleto boleto=repoBoleto.save(new Boleto(1L,2L,70F));
-          assertEquals(1L,boleto.getIdBoleto());
+          assertEquals(new Long(1l),boleto.getIdBoleto());
        }
        
        //@Test
